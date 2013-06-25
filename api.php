@@ -135,6 +135,56 @@ if (!$errors)
                  * Doctor's details
                  */
                 case 'doctor' :
+                    if ($request_parts[2] == 'all') { // All doctors
+                        $query = "SELECT * FROM " . $tb_doctor;
+
+                        if (!$go = @mysql_query($query)) {
+                            $results = Array(
+                                'head' => Array(
+                                    'status' => '0',
+                                    'error_number' => '604',
+                                    'error_message' => 'Select Failed. ' .
+                                    'Probably wrong id supplied.'
+                                ),
+                                'body' => Array()
+                            );
+                        } else {
+                            $retrieve = mysql_query($query) or die(mysql_error());
+                            $doctors = array();
+                            while ($row = mysql_fetch_assoc($retrieve)) {
+                                $doctors[] = $row;
+                            }
+                            $results = array('doctors' => $doctors);
+                        }
+
+                    } else { // Specific doctor (ID)
+                        $query = "SELECT * FROM " . $tb_doctor . " WHERE `do_id` = " . $request_parts[2];
+
+                        if (!$go = @mysql_query($query)) {
+                            $results = Array(
+                                'head' => Array(
+                                    'status' => '0',
+                                    'error_number' => '604',
+                                    'error_message' => 'Select Failed. ' .
+                                    'Probably invalid id supplied.'
+                                ),
+                                'body' => Array()
+                            );
+                        } else {
+                            $retrieve_info = mysql_query($query) or die(mysql_error());
+                            $doctor = array();
+                            while ($row_info = mysql_fetch_assoc($retrieve_info)) {
+
+                                $doctor['do_id'] =  $row_info['do_id'];
+
+                                $doctor['pa_id'] =  $row_info['pa_id'];
+
+                                $doctor['reg_no'] =  $row_info['reg_no'];
+                                
+                            }
+                            $results = array('doctor' => $doctor);
+                        }
+                    }
                     break;
 
                 /*
