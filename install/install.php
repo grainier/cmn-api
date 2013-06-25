@@ -47,7 +47,8 @@ $sql_2 = "CREATE TABLE " . $tb_doctor . " (
 $sql_3 = "CREATE TABLE " . $tb_drug . " (
         dr_id int NOT NULL AUTO_INCREMENT,
         name varchar(20),
-        dosage int,
+        d_time int NOT NULL,
+        d_qnt int NOT NULL,
         PRIMARY KEY(dr_id)
         )";
 
@@ -94,6 +95,18 @@ $sql_9 = "CREATE TABLE " . $tb_contain . " (
         dr_id int NOT NULL,
         PRIMARY KEY(pr_id, dr_id)
         )";
+/**
+ * Dosage Time Constants
+ * =====================
+ * 1: Morning (M)
+ * 2: Day (D)
+ * 3: M&D
+ * 4: Night (N)
+ * 5: MN
+ * 6: DN
+ * 7: MDN
+ * 8: Hourly
+ */
 
 /*
  * Add stub records
