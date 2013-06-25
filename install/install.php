@@ -47,7 +47,8 @@ $sql_2 = "CREATE TABLE " . $tb_doctor . " (
 $sql_3 = "CREATE TABLE " . $tb_drug . " (
         dr_id int NOT NULL AUTO_INCREMENT,
         name varchar(20),
-        dosage int,
+        d_time int NOT NULL,
+        d_qnt int NOT NULL,
         PRIMARY KEY(dr_id)
         )";
 
@@ -92,8 +93,22 @@ $sql_8 = "CREATE TABLE " . $tb_pharmacy . " (
 $sql_9 = "CREATE TABLE " . $tb_contain . " (
         pr_id int NOT NULL,       
         dr_id int NOT NULL,
+        d_time int NOT NULL,
+        d_qnt int NOT NULL,
         PRIMARY KEY(pr_id, dr_id)
         )";
+/**
+ * Dosage Time Constants
+ * =====================
+ * 1: Morning (M)
+ * 2: Day (D)
+ * 3: M&D
+ * 4: Night (N)
+ * 5: MN
+ * 6: DN
+ * 7: MDN
+ * 8: Hourly
+ */
 
 /*
  * Add stub records
@@ -113,11 +128,11 @@ $sql_11 = "INSERT INTO " . $tb_doctor . " (pa_id, reg_no)
 
 $sql_12 = "INSERT INTO " . $tb_drug . " (name, dosage)
                 VALUES
-                        ('Amoxicillin', 7),
-                        ('Prednisolone', 1),
-                        ('Penicillin', 4),
-                        ('Morphine', 4),
-                        ('Paracetamol', 2)";
+                        ('Amoxicillin', 7, 250),
+                        ('Prednisolone', 1, 50),
+                        ('Penicillin', 4, 150),
+                        ('Morphine', 4, 200),
+                        ('Paracetamol', 2, 100)";
 
 $sql_13 = "INSERT INTO " . $tb_alergy . " (pa_id, dr_id)
                 VALUES
@@ -167,18 +182,18 @@ $sql_17 = "INSERT INTO " . $tb_pharmacy . " (name, address, telno)
 
 $sql_18 = "INSERT INTO " . $tb_contain . " (pr_id, dr_id)
                 VALUES
-                        (1, 5),
-                        (2, 5),
-                        (3, 2),
-                        (4, 3),
-                        (5, 2),
-                        (6, 1),
-                        (1, 2),
-                        (2, 3),
-                        (3, 4),
-                        (4, 5),
-                        (5, 5),
-                        (6, 5)";
+                        (1, 5, 1, 100),
+                        (2, 5, 2, 200),
+                        (3, 2, 3, 300),
+                        (4, 3, 4, 400),
+                        (5, 2, 5, 500),
+                        (6, 1, 6, 600),
+                        (1, 2, 1, 100),
+                        (2, 3, 2, 200),
+                        (3, 4, 3, 300),
+                        (4, 5, 4, 400),
+                        (5, 5, 5, 500),
+                        (6, 5, 6, 600)";
 
 
 /*
