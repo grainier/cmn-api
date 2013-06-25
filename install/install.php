@@ -126,7 +126,7 @@ $sql_11 = "INSERT INTO " . $tb_doctor . " (pa_id, reg_no)
                         (1, 0000001),
                         (2, 0000002)";
 
-$sql_12 = "INSERT INTO " . $tb_drug . " (name, dosage)
+$sql_12 = "INSERT INTO " . $tb_drug . " (name, d_time, d_qnt)
                 VALUES
                         ('Amoxicillin', 7, 250),
                         ('Prednisolone', 1, 50),
@@ -180,7 +180,7 @@ $sql_17 = "INSERT INTO " . $tb_pharmacy . " (name, address, telno)
                         ('CSC Pharmacy', '47 Gampaha', '0112233554')";
 
 
-$sql_18 = "INSERT INTO " . $tb_contain . " (pr_id, dr_id)
+$sql_18 = "INSERT INTO " . $tb_contain . " (pr_id, dr_id, d_time, d_qnt)
                 VALUES
                         (1, 5, 1, 100),
                         (2, 5, 2, 200),
@@ -217,10 +217,7 @@ mysql_query($sql_15, $con);
 mysql_query($sql_16, $con);
 mysql_query($sql_17, $con);
 mysql_query($sql_18, $con);
-//        if (!mysql_query($sql_10,$con))
-//        {
-//            echo "Error adding records: " . mysql_error();
-//        }
+
 
 /*
  * Close connection
