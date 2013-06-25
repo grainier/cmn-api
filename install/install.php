@@ -126,11 +126,11 @@ $sql_11 = "INSERT INTO " . $tb_doctor . " (pa_id, reg_no)
 
 $sql_12 = "INSERT INTO " . $tb_drug . " (name, dosage)
                 VALUES
-                        ('Amoxicillin', 7),
-                        ('Prednisolone', 1),
-                        ('Penicillin', 4),
-                        ('Morphine', 4),
-                        ('Paracetamol', 2)";
+                        ('Amoxicillin', 7, 250),
+                        ('Prednisolone', 1, 50),
+                        ('Penicillin', 4, 150),
+                        ('Morphine', 4, 200),
+                        ('Paracetamol', 2, 100)";
 
 $sql_13 = "INSERT INTO " . $tb_alergy . " (pa_id, dr_id)
                 VALUES
