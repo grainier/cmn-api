@@ -39,56 +39,61 @@ TRUBLESHOTING :
 STRUCTURE : 
 ----------------------------------------------------------------------------------------------
 
-http://{YOURDOMAIN}/{YOURPATH}/TYPE/FUNCTION/patient/all
+http://{YOURDOMAIN}/{YOURPATH}/api/FUNCTION/patient/all.TYPE
 
 	
 TYPE:
 	json = output result as json
 	xml  = output result as xml
 
-
 FUNCTION:
-	get  = get wallpapers' infos
-	post = write values into the website, like new favourites ecc... [not currently available]
-	update = get infos about queries, like total wallpapers number ecc... [not currently available]
-
-	
-WHAT:
-	latest         = get wallpapers ordered by latest added
-	popular        = get wallpapers ordered by most viewed
-	top_downloaded = get wallpapers ordered by most downloaded
-	top_favourited = get wallpapers ordered by most favourited
-	top_rated      = get wallpapers ordered by highest rated
-	random         = get wallpapers ordered randomly
-	category       = get wallpapers from a category ordered by latest added
-	tag            = get wallpapers tagged with the required tag ordered by latest added
-	color          = get wallpapers that have a required main color ordered by latest added
-	member         = get member's uploaded wallpapers ordered by latest added
-	fav_cat        = get wallpapers from a member's favourites category ordered by latest favourited
-	search         = do a custom search and return wallpapers ordered by latest added [not currently available]
-	size           = get wallpapers that have a minimum width and a minimum height ordered by latest added
+	get  = retrieve content
+	post = post content
+	update = update content
 
 ==============================================================================================
-View
+GET
 ----------------------------------------------------------------------------------------------
-Patient :   example.com/api/get/patient/all.json    <= all patients
-            example.com/api/get/patient/1.json      <= specific patients (from id)
+ie :   example.com/api/get/patient/all.json    <= all patients
+       example.com/api/get/patient/1.json      <= specific patients (from id)
 
+api/get/patient/all.json
 
-Drug    :
+api/get/patient/1.json		1 => patient ID
+
+api/get/drug/all.json
+
+api/get/drug/1.json		1 => patient ID
+
+api/get/alergy/1.json		1 => patient ID
+
+api/get/adverse/1.json		1 => drug ID
+
+api/get/pharmacy/all.json
+
+api/get/pharmacy/1.json		1 => pharmacy ID
+
+api/get/prescription/1.json 	1 => patient ID
 
 ==============================================================================================
-Add
+POST
 ----------------------------------------------------------------------------------------------
-Patient :   example.com/api/post/patient/grainier/19910919/address/male/716122384.json
+ie :   example.com/api/post/patient/grainier/19910919/address/male/716122384.json
 
+api/post/patient/name/dob/address/gender/telno.json
 
-Drug    :
+api/post/prescription/patient_id/doctor_id/drug1/drug2/drug3/..../drugn.json
 
 ==============================================================================================
-Update
+UPDATE
 ----------------------------------------------------------------------------------------------
-Patient :   example.com/api/post/patient/grainier/19910919/address/male/716122384.json
+ie :   example.com/api/post/patient/grainier/19910919/address/male/716122384.json
 
+api/update/patient/4/name/anushka/dob/19951012/gender/female.json	4 => patient id
 
-Drug    :
+api/update/prescription/issue/4/2.json 	4 => prescription_id/ 2 => pharmacy_id
+
+==============================================================================================
+AUTH
+----------------------------------------------------------------------------------------------
+api/auth/grainier/001.json	grainier => user name / 001 => password
