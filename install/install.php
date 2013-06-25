@@ -93,6 +93,8 @@ $sql_8 = "CREATE TABLE " . $tb_pharmacy . " (
 $sql_9 = "CREATE TABLE " . $tb_contain . " (
         pr_id int NOT NULL,       
         dr_id int NOT NULL,
+        d_time int NOT NULL,
+        d_qnt int NOT NULL,
         PRIMARY KEY(pr_id, dr_id)
         )";
 /**
@@ -180,18 +182,18 @@ $sql_17 = "INSERT INTO " . $tb_pharmacy . " (name, address, telno)
 
 $sql_18 = "INSERT INTO " . $tb_contain . " (pr_id, dr_id)
                 VALUES
-                        (1, 5),
-                        (2, 5),
-                        (3, 2),
-                        (4, 3),
-                        (5, 2),
-                        (6, 1),
-                        (1, 2),
-                        (2, 3),
-                        (3, 4),
-                        (4, 5),
-                        (5, 5),
-                        (6, 5)";
+                        (1, 5, 1, 100),
+                        (2, 5, 2, 200),
+                        (3, 2, 3, 300),
+                        (4, 3, 4, 400),
+                        (5, 2, 5, 500),
+                        (6, 1, 6, 600),
+                        (1, 2, 1, 100),
+                        (2, 3, 2, 200),
+                        (3, 4, 3, 300),
+                        (4, 5, 4, 400),
+                        (5, 5, 5, 500),
+                        (6, 5, 6, 600)";
 
 
 /*
