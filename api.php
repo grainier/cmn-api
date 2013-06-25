@@ -711,7 +711,8 @@ if (!$errors)
                 $retrieve = mysql_query($query) or die(mysql_error());
                 $auth = array();
                 while ($row = mysql_fetch_assoc($retrieve)) {
-                    $auth[] = $row;
+                    $auth['type'] = $row['type'];
+                    $auth['us_id'] = $row['us_id'];
                 }
                 $results = array('auth' => $auth);
             }
